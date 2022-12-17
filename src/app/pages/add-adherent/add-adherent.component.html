@@ -1,0 +1,82 @@
+
+<section class="ad-post bg-gray py-5">
+    <div class="container">
+        <form >
+            <!-- Post Your ad start -->
+            <fieldset class="border border-gary p-4 mb-5">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3>Ajouter un Adherent</h3>
+                        </div>
+                        <div class="col-lg-6">
+                            <h6 class="font-weight-bold pt-4 pb-1">nom </h6>
+                            <input type="text" class="border w-100 p-2 bg-white text-capitalize" id="nom" (change)="getName(nom.value)" #nom placeholder="nom" >
+                            
+                            <h6 class="font-weight-bold pt-4 pb-1">prenom</h6>
+                            <input type="text" class="border w-100 p-2 bg-white text-capitalize" id="prenom" (change)="getPrenom(prenom.value)" #prenom placeholder=" prenom "  >
+
+                            <div class="choose-file text-center my-4 py-4 rounded">
+                                <label for="file-upload">
+                                    <span class="d-block font-weight-bold text-dark"> Déposez des images n'importe où pour votre piece</span>
+                                    <span class="d-block">or</span>
+                                    <span class="d-block btn bg-primary text-white my-3 select-files">Select image</span>
+                                    <span class="d-block">le nombres maximum des images est: 4</span>
+                                    <input id="formFile" class="form-control" 
+                                    type="file"
+                                    class="p-inputtext"
+                                    accept="image/*"
+                                    (change)="onFileChanged($event)"
+                                  />  
+                                </label>
+                                
+                            </div>
+                     
+                            
+                        </div>
+                       
+                        <div class="col-lg-6">
+                            <h6 class="font-weight-bold pt-4 pb-1">Select Type abonnement:</h6>
+                            <select  ="categorie" id="inputGroupSelect" class="w-100">
+                                <option>Gold</option>
+                               
+                            </select>
+                            <div class="price">
+                                <h6 class="font-weight-bold pt-4 pb-1">Numero telephone (+216):</h6>
+                                <div class="row px-3">
+                                    <div class="col-lg-4 mr-lg-4 rounded bg-white my-2 ">
+                                        <input type="number"  class="border-0 py-2 w-100 price" placeholder="00 000 000" id="tel" (change)="getTel(tel.value)" #tel>
+                                    </div>
+                                
+                                </div>
+                            </div>
+
+                            
+                              
+                           
+                              <button class="btn btn-primary">Ajouter</button>
+
+                         
+                        </div>
+                    </div>
+            </fieldset>
+            </form>
+            </div>
+         
+
+              <div class="alert alert-danger "   data-delay="100" aria-atomic="true" aria-live="assertive" style="position:fixed; top: 5rem; right: 3rem; min-width:400PX; ">
+                <button (click)="OnEditAdherent()" type="button" class="ml-2 mb-1 close" data-dismiss="alert" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>
+
+                <h4 class="alert-heading"  >Error!</h4>
+                <h6></h6>
+           
+              </div>
+
+              <div class="alert alert-danger "   data-delay="100" aria-atomic="true" aria-live="assertive" style="position:fixed; top: 5rem; right: 3rem; min-width:400PX; " >
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="alert" aria-label="Fermer"><span aria-hidden="true">&times;</span></button>
+        
+                <h4 class="alert-heading"  >Error!</h4>
+                <h6></h6>
+           
+              </div>
+       
+</section>
