@@ -1,5 +1,7 @@
+import { Router } from '@angular/router';
 import { Adherent } from './../../models/adherent';
 import { Component, OnInit } from '@angular/core';
+import { StorageServiceService } from 'src/app/services/storage-service.service';
 
 @Component({
   selector: 'app-list-adherent',
@@ -8,11 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListAdherentComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private storage:StorageServiceService,
+
+  ) { }
 
   listAdherent:Adherent[] | undefined;
 
   ngOnInit(): void {
+    if (!this.storage.isLogedIn()) {
+      this.router.navigate(["login"]) 
+    }
   }
 
 }

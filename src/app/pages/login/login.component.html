@@ -8,11 +8,23 @@
                     <form [formGroup]="loginForm" (ngSubmit)="login()" >
                         <fieldset class="p-4">
                             <input type="text" placeholder="nom d'administrateur" formControlName="email" name="email" class="border p-3 w-100 my-2">
+                           
+                            <div *ngIf="submitted && loginForm.controls.email.errors" class="alert alert-danger" >
+                                <div *ngIf="submitted && loginForm.controls.email.errors!.required"  >email is Required</div>
+                                <div *ngIf="submitted && loginForm.controls.email.errors"  >email not valid</div>
+
+
+                            </div>
+                           
                             <input type="password" placeholder="mot de passe" formControlName="password" name="password" class="border p-3 w-100 my-2">
                            
-                            <div class="alert alert-danger" ></div>
-                            <button type="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Connexion</button>
-                            <a routerLink="verification">Mot de passe oublié</a>
+                            <div *ngIf="submitted && loginForm.controls.password.errors" class="alert alert-danger" >
+                                <div *ngIf="submitted && loginForm.controls.password.errors!.required"  >Password is Required</div>
+                                <div *ngIf="submitted && loginForm.controls.password.errors"  >Password min length 4</div>
+
+
+                            </div>
+                            <button type="submit"   class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Connexion</button>
 
                         </fieldset>
                     </form>

@@ -1,6 +1,10 @@
 import { StorageServiceService } from './../../services/storage-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+
+const URL=environment.apiUrl;
 
 @Component({
   selector: 'app-modifier-adherent',
@@ -11,7 +15,8 @@ export class ModifierAdherentComponent implements OnInit {
 
   constructor(
     private http:HttpClient,
-    private storage:StorageServiceService
+    private storage:StorageServiceService,
+    private router: Router,
   ) { }
 
 
@@ -75,6 +80,10 @@ export class ModifierAdherentComponent implements OnInit {
     }
 
   ngOnInit(): void {
+   
+    if (!this.storage.isLogedIn()) {
+      this.router.navigate(["login"]) 
+    }
   }
 
 }

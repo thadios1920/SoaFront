@@ -1,3 +1,4 @@
+import { ProgrammeComponent } from './pages/programme/programme.component';
 import { ModifierAdherentComponent } from './pages/modifier-adherent/modifier-adherent.component';
 import { AddAdherentComponent } from './pages/add-adherent/add-adherent.component';
 import { ListAdherentComponent } from './pages/list-adherent/list-adherent.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path:'list',component:ListAdherentComponent},
   {path:'ajouter',component:AddAdherentComponent},
   {path:'modifier',component:ModifierAdherentComponent},
+  {path:'programme',component:ProgrammeComponent},
   { path:'', redirectTo:'login',pathMatch:'full'},
  { path:'**',component:ErrorComponent},
 ];

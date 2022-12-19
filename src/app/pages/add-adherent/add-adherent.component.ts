@@ -1,6 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StorageServiceService } from 'src/app/services/storage-service.service';
+import { environment } from 'src/environments/environment';
+
+const URL=environment.apiUrl;
+
 
 @Component({
   selector: 'app-add-adherent',
@@ -11,7 +16,9 @@ export class AddAdherentComponent implements OnInit {
 
   constructor(
     private http:HttpClient,
-    private storage:StorageServiceService
+    private storage:StorageServiceService,
+    private router: Router,
+
   ) { }
 
 
@@ -21,7 +28,6 @@ export class AddAdherentComponent implements OnInit {
   prenom:string = "" 
   email:string = "" 
   tel: string = ""
-  password:string = "" 
    
 
     // upload Image
@@ -52,18 +58,13 @@ export class AddAdherentComponent implements OnInit {
       console.log(email);
       
     }
-    getPassword(password: string | any) {
-      this.password = password;
-      console.log(password);
-    }
-
+    
     OnEditAdherent() {
       let formData = new FormData();
       formData.set('nom', this.nom)
       formData.set('prenom', this.prenom)
       formData.set('email', this.email)
       formData.set('tel', this.tel)
-      formData.set('password', this.password)
       formData.set('image',this.selectedFile)
   
       console.log(formData);
@@ -73,5 +74,8 @@ export class AddAdherentComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    if (!this.storage.isLogedIn()) {
+      this.router.navigate(["login"]) 
+    }
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { StorageServiceService } from 'src/app/services/storage-service.service';
 
 @Component({
   selector: 'app-programme',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgrammeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private storage:StorageServiceService,
+    private router: Router
+  ) { }
+
+  
 
   ngOnInit(): void {
+    // if (!this.storage.isLogedIn()) {
+    //   this.router.navigate(["login"]) 
+    // }
   }
 
 }

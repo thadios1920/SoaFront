@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
                                   private tokenStorage:StorageServiceService
   ) { }
 
+  submitted=false;
   messageError:String = "";
   public loginForm!: FormGroup;
 
@@ -27,7 +28,6 @@ export class LoginComponent implements OnInit {
     // console.log("click")
     this.authService.login(this.loginForm.value).subscribe(
       data => {
-        this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data.user);
 
         // this.isLoginFailed = false;
@@ -66,8 +66,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email:['',Validators.required],
-      password:['',Validators.required],
+      email:['',[Validators.email,Validators.required]],
+      password:['',[Validators.required,Validators.minLength(4)]],
       })
   }
 
